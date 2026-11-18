@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>საქართველოს გეოგრაფიული მდებარეობა | სასწავლო პორტფოლიო</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#1b4332',
+              green: '#2d6a4f',
+              sage: '#40916c',
+              lightgreen: '#52b788',
+              softgreen: '#d8f3dc',
+              deepbrown: '#3e2723',
+              brown: '#5d4037',
+              warmbrown: '#6f4e37',
+              chestnut: '#8b5a2b',
+              clay: '#a0522d',
+              ochre: '#bc6c25',
+              sand: '#fbf9f5',
+              cream: '#f4ede4'
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans Georgian"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Noto Sans Georgian -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#fbf9f5] text-stone-800 flex flex-col min-h-screen">
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="navbar-gradient sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo / Title -->
+        <a href="index.html" class="flex items-center gap-3 text-white group">
+          <div class="w-12 h-12 rounded-xl bg-amber-600/30 border border-amber-400/40 flex items-center justify-center text-2xl shadow-inner group-hover:scale-105 transition">
+            🇬🇪
+          </div>
+          <div>
+            <div class="font-extrabold text-lg sm:text-xl tracking-tight text-white flex items-center gap-2">
+              GeoEdu <span class="text-xs bg-amber-600 text-amber-100 font-bold px-2 py-0.5 rounded-full uppercase">საქართველო</span>
+            </div>
+            <p class="text-xs text-emerald-200">გეოგრაფიის სასწავლო პორტფოლიო</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2">
+          <a href="index.html" class="nav-link text-white hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            🗺️ მდებარეობა
+          </a>
+          <a href="records.html" class="nav-link text-stone-200 hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            🏔️ რეკორდები
+          </a>
+          <a href="rivers.html" class="nav-link text-stone-200 hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            🌊 მდინარეები
+          </a>
+          <a href="caves.html" class="nav-link text-stone-200 hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            🦇 მღვიმეები
+          </a>
+          <a href="nature.html" class="nav-link text-stone-200 hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            🌲 ბუნება & პარკები
+            <span class="text-[10px] bg-emerald-500 text-white px-1.5 py-0.2 rounded-md ml-1 font-bold">ახალი</span>
+          </a>
+          <a href="teachers.html" class="nav-link text-stone-200 hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            👨‍🏫 პედაგოგები (API)
+          </a>
+        </nav>
+
+        <!-- CTA Action -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="teachers.html" class="px-4 py-2 bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold rounded-full transition shadow-md flex items-center gap-2">
+            <span>🔍</span> პედაგოგთა რეესტრი
+          </a>
+        </div>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="lg:hidden flex items-center">
+          <button id="mobileMenuButton" type="button" class="p-2 rounded-lg text-emerald-100 hover:text-white hover:bg-emerald-800/60 focus:outline-none" aria-label="მენიუს გახსნა">
+            <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#1b4332] border-t border-emerald-700/50 px-4 pt-3 pb-5 space-y-2">
+      <a href="index.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-white font-semibold hover:bg-emerald-800/80">
+        🗺️ საქართველოს გეოგრაფიული მდებარეობა
+      </a>
+      <a href="records.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-emerald-100 font-semibold hover:bg-emerald-800/80">
+        🏔️ რეკორდული მაჩვენებლები
+      </a>
+      <a href="rivers.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-emerald-100 font-semibold hover:bg-emerald-800/80">
+        🌊 საქართველოს მდინარეები
+      </a>
+      <a href="caves.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-emerald-100 font-semibold hover:bg-emerald-800/80">
+        🦇 საქართველოს მღვიმეები
+      </a>
+      <a href="nature.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-emerald-100 font-semibold hover:bg-emerald-800/80">
+        🌲 ბუნება & დაცული ტერიტორიები <span class="text-[10px] bg-emerald-500 text-white px-1.5 py-0.5 rounded font-bold">ახალი</span>
+      </a>
+      <a href="teachers.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-emerald-100 font-semibold hover:bg-emerald-800/80">
+        👨‍🏫 გეოგრაფიის პედაგოგები (API მომხმარებლები)
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-geo text-white py-16 lg:py-24 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 bg-emerald-950/60 border border-emerald-400/30 text-amber-300 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase">
+            <span>📍</span> გვერდი 1: სასწავლო მოდული
+          </div>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+            საქართველოს <br>
+            <span class="text-amber-300">გეოგრაფიული მდებარეობა</span>
+          </h1>
+          <p class="text-base sm:text-lg text-stone-200 leading-relaxed font-light">
+            საქართველო მდებარეობს ევროპისა და აზიის გზაგასაყარზე, კავკასიის ისთმუსზე, შავი ზღვის აღმოსავლეთ სანაპიროზე. უნიკალური რელიეფი, კონტრასტული კლიმატური სარტყლები და სტრატეგიული გეოპოლიტიკური დერეფანი მას მსოფლიოს ერთ-ერთ ყველაზე მრავალფეროვან ქვეყნად აქცევს.
+          </p>
+
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a href="#bordersSection" class="btn-primary-geo">
+              <span>🧭</span> საზღვრები & კოორდინატები
+            </a>
+            <a href="records.html" class="btn-secondary-geo">
+              <span>🏆</span> რეკორდული მაჩვენებლები &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Info Box / Visual Map Representation -->
+        <div class="lg:col-span-5">
+          <div class="bg-gradient-to-br from-[#2d6a4f]/90 to-[#3e2723]/90 backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 border-amber-600/30 shadow-2xl text-white">
+            <h3 class="text-xl font-bold mb-5 pb-3 border-b border-emerald-600/50 flex items-center justify-between">
+              <span>ძირითადი გეოგრაფიული ფაქტები</span>
+              <span class="text-xs bg-amber-600 px-2.5 py-1 rounded-md font-bold">2026</span>
+            </h3>
+
+            <div class="grid grid-cols-2 gap-4 text-center">
+              <div class="bg-black/20 p-4 rounded-xl border border-white/10">
+                <div class="text-2xl sm:text-3xl font-extrabold text-amber-300">69,700</div>
+                <div class="text-xs text-stone-300 font-medium mt-1">ფართობი (კმ²)</div>
+              </div>
+              <div class="bg-black/20 p-4 rounded-xl border border-white/10">
+                <div class="text-2xl sm:text-3xl font-extrabold text-emerald-300">2,148</div>
+                <div class="text-xs text-stone-300 font-medium mt-1">საზღვრების სიგრძე (კმ)</div>
+              </div>
+              <div class="bg-black/20 p-4 rounded-xl border border-white/10">
+                <div class="text-2xl sm:text-3xl font-extrabold text-amber-300">315</div>
+                <div class="text-xs text-stone-300 font-medium mt-1">შავი ზღვის სანაპირო (კმ)</div>
+              </div>
+              <div class="bg-black/20 p-4 rounded-xl border border-white/10">
+                <div class="text-2xl sm:text-3xl font-extrabold text-emerald-300">5,201 მ</div>
+                <div class="text-xs text-stone-300 font-medium mt-1">უმაღლესი მწვერვალი (შხარა)</div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-emerald-600/40 text-xs text-stone-300 space-y-1.5">
+              <p><strong>დროის სარტყელი:</strong> UTC+4 (სტანდარტული ქართული დრო)</p>
+              <p><strong>გეოგრაფიული ცენტრი:</strong> ლიხის ქედი (სურამის უღელტეხილი)</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 1: ASTRONOMICAL COORDINATES & EXTREME POINTS ================= -->
+  <section id="bordersSection" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="badge-green mb-3">კოორდინატები და უკიდურესი წერტილები</span>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
+        საქართველოს უკიდურესი წერტილები
+      </h2>
+      <p class="text-stone-600 mt-3 text-sm sm:text-base">
+        საქართველო ვრცელდება ჩრდილოეთ განედის 41°07' და 43°35' და აღმოსავლეთ გრძედის 40°04' და 46°44'-ს შორის.
+      </p>
+    </div>
+
+    <!-- 4 Extreme Points Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- North -->
+      <div class="geo-card p-6 border-green-accent">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-2xl">🧭</span>
+          <span class="badge-green text-xs">ჩრდილოეთი</span>
+        </div>
+        <h3 class="font-bold text-lg text-stone-900 mb-1">მთა აიბღა</h3>
+        <p class="text-xs text-emerald-800 font-semibold mb-2">აფხაზეთი / მდ. ფსოუს ხეობა</p>
+        <p class="text-xs text-stone-600 leading-relaxed">
+          მდებარეობს ჩრდ. განედის 43°35'-ზე. ეს არის ქვეყნის ყველაზე ჩრდილოეთით მდებარე წერტილი.
+        </p>
+      </div>
+
+      <!-- South -->
+      <div class="geo-card p-6 border-brown-accent">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-2xl">🧭</span>
+          <span class="badge-brown text-xs">სამხრეთი</span>
+        </div>
+        <h3 class="font-bold text-lg text-stone-900 mb-1">მთა ყანლისთავი</h3>
+        <p class="text-xs text-amber-900 font-semibold mb-2">ჯავახეთის ქედი / თურქეთის საზღვარი</p>
+        <p class="text-xs text-stone-600 leading-relaxed">
+          მდებარეობს ჩრდ. განედის 41°07'-ზე. წარმოადგენს საქართველოს უკიდურეს სამხრეთ სასაზღვრო წერტილს.
+        </p>
+      </div>
+
+      <!-- West -->
+      <div class="geo-card p-6 border-green-accent">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-2xl">🧭</span>
+          <span class="badge-green text-xs">დასავლეთი</span>
+        </div>
+        <h3 class="font-bold text-lg text-stone-900 mb-1">დაბა ლესელიძე</h3>
+        <p class="text-xs text-emerald-800 font-semibold mb-2">შავი ზღვის სანაპირო / მდ. ფსოუ</p>
+        <p class="text-xs text-stone-600 leading-relaxed">
+          მდებარეობს აღმ. გრძედის 40°04'-ზე. აქ მდებარეობს საქართველოს უკიდურესი დასავლეთი ზღვისპირა წერტილი.
+        </p>
+      </div>
+
+      <!-- East -->
+      <div class="geo-card p-6 border-brown-accent">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-2xl">🧭</span>
+          <span class="badge-brown text-xs">აღმოსავლეთი</span>
+        </div>
+        <h3 class="font-bold text-lg text-stone-900 mb-1">აგრიჩაის შესართავი</h3>
+        <p class="text-xs text-amber-900 font-semibold mb-2">მდ. ალაზანი / აზერბაიჯანის საზღვარი</p>
+        <p class="text-xs text-stone-600 leading-relaxed">
+          მდებარეობს აღმ. გრძედის 46°44'-ზე. აღმოსავლეთით მდინარე ალაზნისა და აგრიჩაის შესართავთან.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 2: BORDERS & NEIGHBORING STATES ================= -->
+  <section class="py-16 bg-gradient-to-b from-stone-100 to-[#fbf9f5] border-y border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-5 space-y-4">
+          <span class="badge-brown text-xs">სახელმწიფო საზღვრები</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900">
+            საზღვრები და მეზობელი სახელმწიფოები
+          </h2>
+          <p class="text-stone-600 text-sm leading-relaxed">
+            საქართველოს საერთო საზღვრის სიგრძე 2,148 კილომეტრია. აქედან სახმელეთო საზღვარი შეადგენს 1,833 კმ-ს, ხოლო საზღვაო სანაპირო ზოლი (შავი ზღვა) — 315 კმ-ს.
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <div class="p-3 bg-white rounded-xl border border-stone-200 flex items-center justify-between shadow-sm">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-xs">ჩრდ</span>
+                <div>
+                  <h4 class="font-bold text-sm text-stone-900">რუსეთის ფედერაცია</h4>
+                  <p class="text-xs text-stone-500">კავკასიონის მთავარი ქედის გასწვრივ</p>
+                </div>
+              </div>
+              <span class="font-bold text-emerald-800 text-sm">894 კმ</span>
+            </div>
+
+            <div class="p-3 bg-white rounded-xl border border-stone-200 flex items-center justify-between shadow-sm">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-900 font-bold flex items-center justify-center text-xs">ს-ა</span>
+                <div>
+                  <h4 class="font-bold text-sm text-stone-900">აზერბაიჯანის რესპუბლიკა</h4>
+                  <p class="text-xs text-stone-500">ივრის ზეგანი, ალაზნის ველი, ქვემო ქართლი</p>
+                </div>
+              </div>
+              <span class="font-bold text-amber-900 text-sm">446 კმ</span>
+            </div>
+
+            <div class="p-3 bg-white rounded-xl border border-stone-200 flex items-center justify-between shadow-sm">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-stone-100 text-stone-800 font-bold flex items-center justify-center text-xs">სამ</span>
+                <div>
+                  <h4 class="font-bold text-sm text-stone-900">სომხეთის რესპუბლიკა</h4>
+                  <p class="text-xs text-stone-500">ლოქის ქედი და ჯავახეთის პლატო</p>
+                </div>
+              </div>
+              <span class="font-bold text-stone-800 text-sm">224 კმ</span>
+            </div>
+
+            <div class="p-3 bg-white rounded-xl border border-stone-200 flex items-center justify-between shadow-sm">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-900 font-bold flex items-center justify-center text-xs">ს-დ</span>
+                <div>
+                  <h4 class="font-bold text-sm text-stone-900">თურქეთის რესპუბლიკა</h4>
+                  <p class="text-xs text-stone-500">შავშეთის ქედი, ჭოროხის ხეობა, კარწახის ტბა</p>
+                </div>
+              </div>
+              <span class="font-bold text-amber-900 text-sm">275 კმ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Geographic Bridge & Transit Role -->
+        <div class="lg:col-span-7">
+          <div class="bg-gradient-to-br from-emerald-900 to-[#4a2e18] p-8 rounded-3xl text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-amber-500/10 rounded-full blur-2xl"></div>
+
+            <span class="bg-amber-500/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full text-xs font-bold uppercase">
+              სტრატეგიული მნიშვნელობა
+            </span>
+
+            <h3 class="text-2xl sm:text-3xl font-extrabold mt-4 mb-4">
+              ევრაზიის სატრანზიტო და ცივილიზაციური ხიდი
+            </h3>
+
+            <p class="text-stone-200 text-sm leading-relaxed mb-6 font-light">
+              საქართველო ისტორიულად წარმოადგენს <strong>აბრეშუმის დიდი გზის</strong> ცენტრალურ არტერიას. დღეს ის არის ევროკავშირისა და აზიის დამაკავშირებელი საერთაშორისო სატრანსპორტო დერეფნის (TRACECA) უმთავრესი რგოლი, რომელიც მოიცავს ნავთობსადენებს (ბაქო-თბილისი-ჯეიჰანი), გაზსადენებს (სამხრეთ კავკასიური დერეფანი), რკინიგზასა და შავი ზღვის პორტებს (ბათუმი, ფოთი, ანაკლია).
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+                <div class="font-bold text-amber-300 mb-1">🚢 საზღვაო გასასვლელი</div>
+                <p class="text-stone-300">შავი ზღვა საქართველოს პირდაპირ აკავშირებს ევროპულ ბაზრებთან და მსოფლიო ოკეანესთან.</p>
+              </div>
+              <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+                <div class="font-bold text-emerald-300 mb-1">⛰️ ბუნებრივი ფორპოსტი</div>
+                <p class="text-stone-300">დიდი კავკასიონი იცავს ქვეყანას ჩრდილოეთის ცივი ჰაერის მასების უეცარი შემოჭრისგან.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3: RELIEF & OROGRAPHY ================= -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="badge-green mb-3">ოროგრაფია და გეომორფოლოგია</span>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
+        საქართველოს რელიეფის 4 მთავარი ზონა
+      </h2>
+      <p class="text-stone-600 mt-3 text-sm sm:text-base">
+        საქართველოს ტერიტორიის 85% მთიანი და ბორცვიანია, ხოლო დაბლობებსა და ბარებს მხოლოდ 15% უკავია.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Zone 1 -->
+      <div class="geo-card p-6 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl mb-4">
+            🏔️
+          </div>
+          <h3 class="font-bold text-lg text-stone-900 mb-2">დიდი კავკასიონი</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            ჩრდილოეთის ძლევამოსილი მთათა სისტემა, რომელიც მოიცავს კავკასიონის მთავარ წყალგამყოფ ქედს და მის გვერდით განშტოებებს (გაგრის, ბზიფის, ეგრისის, ლეჩხუმის, სვანეთის, ყაზბეგის ქედები). აქ მდებარეობს 5,000 მეტრზე მაღალი მწვერვალები.
+          </p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-stone-100 text-xs font-semibold text-emerald-800">
+          მაქსიმუმი: შხარა (5,201 მ)
+        </div>
+      </div>
+
+      <!-- Zone 2 -->
+      <div class="geo-card p-6 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xl mb-4">
+            ⛰️
+          </div>
+          <h3 class="font-bold text-lg text-stone-900 mb-2">სამხრეთ მთიანეთი</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            მცირე კავკასიონი და სამხრეთ საქართველოს ვულკანური ზეგანი (ჯავახეთისა და წალკის პლატოები, აბულ-სამსარის ქედი). გამოირჩევა ვულკანური კონუსებით, მაღალმთიანი ტბებითა და სტეპური ლანდშაფტებით.
+          </p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-stone-100 text-xs font-semibold text-amber-900">
+          მაქსიმუმი: დიდი აბული (3,301 მ)
+        </div>
+      </div>
+
+      <!-- Zone 3 -->
+      <div class="geo-card p-6 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl mb-4">
+            🌿
+          </div>
+          <h3 class="font-bold text-lg text-stone-900 mb-2">ამიერკავკასიის ბარი</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            დასავლეთით კოლხეთის დაბლობი (ალუვიური ვაკე, ჭარბტენიანი ტყეები და ტორფნარები) და აღმოსავლეთით შიდა ქართლისა და ქვემო ქართლის ბარები, ივრის ზეგანი და ალაზნის ველი.
+          </p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-stone-100 text-xs font-semibold text-emerald-800">
+          სასოფლო-სამეურნეო გული
+        </div>
+      </div>
+
+      <!-- Zone 4 -->
+      <div class="geo-card p-6 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xl mb-4">
+            🛡️
+          </div>
+          <h3 class="font-bold text-lg text-stone-900 mb-2">ლიხის (სურამის) ქედი</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            საქართველოს გეოგრაფიული და კლიმატური ხერხემალი. აკავშირებს დიდ და მცირე კავკასიონს და ქვეყანას ყოფს ორ მკვეთრად განსხვავებულ ნაწილად: დასავლეთ და აღმოსავლეთ საქართველოდ.
+          </p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-stone-100 text-xs font-semibold text-amber-900">
+          მთავარი კლიმატგამყოფი
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4: CLIMATE ZONES ================= -->
+  <section class="py-16 bg-[#f4ede4] border-t border-stone-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="badge-brown mb-2">კლიმატის მრავალფეროვნება</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-stone-900">
+          კლიმატური კონტრასტები
+        </h2>
+        <p class="text-stone-700 text-sm mt-2">
+          მცირე ტერიტორიის მიუხედავად, საქართველოში თითქმის ყველა ტიპის კლიმატური სარტყელია წარმოდგენილი — ნოტიო სუბტროპიკებიდან მუდმივი თოვლისა და მყინვარების ზონამდე.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-white p-6 rounded-2xl border-t-4 border-t-emerald-700 shadow-sm">
+          <span class="badge-green text-xs mb-3">დასავლეთ საქართველო</span>
+          <h3 class="font-bold text-lg text-stone-900 mb-2">ნოტიო სუბტროპიკული</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            შავი ზღვის სიახლოვე და კავკასიონის ბარიერი ქმნის თბილ, უხვნალექიან კლიმატს. ნალექების რაოდენობა წელიწადში 1,500-დან 4,500 მმ-მდე აღწევს (მთა მტირალა). ზამთარი რბილია, ზაფხული კი თბილი და ნოტიო.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border-t-4 border-t-amber-800 shadow-sm">
+          <span class="badge-brown text-xs mb-3">აღმოსავლეთ საქართველო</span>
+          <h3 class="font-bold text-lg text-stone-900 mb-2">ზომიერად მშრალი სუბტროპიკული</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            კონტინენტური ელემენტებით გაჯერებული მშრალი და ზომიერი ჰავა. ნალექების რაოდენობა შედარებით დაბალია (400-800 მმ წელიწადში), განსაკუთრებით ქვემო ქართლსა და ივრის ზეგანზე (შირაქი/ელდარი).
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border-t-4 border-t-stone-700 shadow-sm">
+          <span class="badge-green text-xs mb-3">მაღალმთიანი რეგიონები</span>
+          <h3 class="font-bold text-lg text-stone-900 mb-2">ალპური & ნივალური ზონა</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            ზღვის დონიდან 2,000 მეტრის ზემოთ ჰავა მკაცრი და ცივია. ზაფხული ხანმოკლე და გრილია, ხოლო ზამთარი — ხანგრძლივი და თოვლიანი. 3,500 მეტრის ზემოთ იწყება მარადიული თოვლისა და მყინვარების სამეფო.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Quick Navigation To Next Page -->
+      <div class="mt-12 text-center">
+        <a href="records.html" class="btn-primary-geo text-sm">
+          გადასვლა მე-2 გვერდზე: რეკორდული მაჩვენებლები &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-geo mt-auto py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
+        
+        <!-- Col 1 -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-white font-extrabold text-lg">
+            <span>🇬🇪</span> GeoEdu საქართველო
+          </div>
+          <p class="text-stone-400 text-xs leading-relaxed">
+            საქართველოს გეოგრაფიის სასწავლო პორტფოლიო. შექმნილია თანამედროვე ვებ-ტექნოლოგიების (HTML, Tailwind CSS, JavaScript) გამოყენებით.
+          </p>
+          <div class="text-xs text-amber-400 font-medium">
+            ფერების გამა: მიწისფერი ყავისფერი & ბუნებრივი მწვანე
+          </div>
+        </div>
+
+        <!-- Col 2: Sitemap -->
+        <div>
+          <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">პორტფოლიოს გვერდები</h4>
+          <ul class="space-y-2 text-xs text-stone-300">
+            <li><a href="index.html" class="hover:text-amber-300 transition">1. გეოგრაფიული მდებარეობა</a></li>
+            <li><a href="records.html" class="hover:text-amber-300 transition">2. რეკორდული მაჩვენებლები</a></li>
+            <li><a href="rivers.html" class="hover:text-amber-300 transition">3. საქართველოს მდინარეები</a></li>
+            <li><a href="caves.html" class="hover:text-amber-300 transition">4. საქართველოს მღვიმეები</a></li>
+            <li><a href="nature.html" class="hover:text-amber-300 transition">5. ბუნება & პარკები (ახალი გვერდი)</a></li>
+            <li><a href="teachers.html" class="hover:text-amber-300 transition">6. პედაგოგები (API მომხმარებლები)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: API Reference -->
+        <div>
+          <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">ინტეგრირებული API</h4>
+          <p class="text-xs text-stone-400 mb-2">
+            პროექტში ინტეგრირებულია <strong>JSONPlaceholder</strong> RESTful API რესურსი:
+          </p>
+          <div class="bg-black/30 p-2.5 rounded-lg border border-white/10 text-xs font-mono text-emerald-300">
+            GET /users
+          </div>
+          <p class="text-[11px] text-stone-400 mt-2">
+            საძიებო სისტემა, რეგიონული ფილტრაცია და პედაგოგთა პროფილები.
+          </p>
+        </div>
+
+        <!-- Col 4: Quote -->
+        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+          <div class="text-amber-300 text-lg mb-1">“</div>
+          <p class="text-xs italic text-stone-300 leading-relaxed">
+            „ლამაზი ქვეყნის შვილები ვართ, ბუნებისგან დალოცვილი და მრავალფეროვანი.“
+          </p>
+          <div class="text-right text-[11px] text-amber-400 font-bold mt-2">
+            — ქართული კლასიკა
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="pt-6 border-t border-stone-800 text-center text-xs text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div>
+          &copy; <span id="currentYear">2026</span> GeoEdu. საქართველოს გეოგრაფიის სასწავლო პორტფოლიო.
+        </div>
+        <div class="text-[11px] text-stone-400">
+          სრულად რესპონსიული ვებ-გვერდი • Tailwind CSS & JavaScript
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll To Top Button -->
+  <button id="scrollTopBtn" type="button" class="fixed bottom-6 right-6 p-3 rounded-full bg-emerald-700 text-white shadow-xl opacity-0 pointer-events-none transition-all duration-300 hover:bg-emerald-800 focus:outline-none z-40" aria-label="ზემოთ დაბრუნება">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

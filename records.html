@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>რეკორდული მაჩვენებლები | საქართველოს გეოგრაფია</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#1b4332',
+              green: '#2d6a4f',
+              sage: '#40916c',
+              lightgreen: '#52b788',
+              softgreen: '#d8f3dc',
+              deepbrown: '#3e2723',
+              brown: '#5d4037',
+              warmbrown: '#6f4e37',
+              chestnut: '#8b5a2b',
+              clay: '#a0522d',
+              ochre: '#bc6c25',
+              sand: '#fbf9f5',
+              cream: '#f4ede4'
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans Georgian"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Noto Sans Georgian -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#fbf9f5] text-stone-800 flex flex-col min-h-screen">
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="navbar-gradient sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo / Title -->
+        <a href="index.html" class="flex items-center gap-3 text-white group">
+          <div class="w-12 h-12 rounded-xl bg-amber-600/30 border border-amber-400/40 flex items-center justify-center text-2xl shadow-inner group-hover:scale-105 transition">
+            🇬🇪
+          </div>
+          <div>
+            <div class="font-extrabold text-lg sm:text-xl tracking-tight text-white flex items-center gap-2">
+              GeoEdu <span class="text-xs bg-amber-600 text-amber-100 font-bold px-2 py-0.5 rounded-full uppercase">საქართველო</span>
+            </div>
+            <p class="text-xs text-emerald-200">გეოგრაფიის სასწავლო პორტფოლიო</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2">
+          <a href="index.html" class="nav-link text-stone-200 hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            🗺️ მდებარეობა
+          </a>
+          <a href="records.html" class="nav-link text-white hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            🏔️ რეკორდები
+          </a>
+          <a href="rivers.html" class="nav-link text-stone-200 hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            🌊 მდინარეები
+          </a>
+          <a href="caves.html" class="nav-link text-stone-200 hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            🦇 მღვიმეები
+          </a>
+          <a href="nature.html" class="nav-link text-stone-200 hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            🌲 ბუნება & პარკები
+            <span class="text-[10px] bg-emerald-500 text-white px-1.5 py-0.2 rounded-md ml-1 font-bold">ახალი</span>
+          </a>
+          <a href="teachers.html" class="nav-link text-stone-200 hover:text-amber-300 px-3 py-2 text-sm font-semibold rounded-lg">
+            👨‍🏫 პედაგოგები (API)
+          </a>
+        </nav>
+
+        <!-- CTA Action -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="teachers.html" class="px-4 py-2 bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold rounded-full transition shadow-md flex items-center gap-2">
+            <span>🔍</span> პედაგოგთა რეესტრი
+          </a>
+        </div>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <div class="lg:hidden flex items-center">
+          <button id="mobileMenuButton" type="button" class="p-2 rounded-lg text-emerald-100 hover:text-white hover:bg-emerald-800/60 focus:outline-none" aria-label="მენიუს გახსნა">
+            <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#1b4332] border-t border-emerald-700/50 px-4 pt-3 pb-5 space-y-2">
+      <a href="index.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-emerald-100 font-semibold hover:bg-emerald-800/80">
+        🗺️ საქართველოს გეოგრაფიული მდებარეობა
+      </a>
+      <a href="records.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-white font-semibold hover:bg-emerald-800/80">
+        🏔️ რეკორდული მაჩვენებლები
+      </a>
+      <a href="rivers.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-emerald-100 font-semibold hover:bg-emerald-800/80">
+        🌊 საქართველოს მდინარეები
+      </a>
+      <a href="caves.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-emerald-100 font-semibold hover:bg-emerald-800/80">
+        🦇 საქართველოს მღვიმეები
+      </a>
+      <a href="nature.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-emerald-100 font-semibold hover:bg-emerald-800/80">
+        🌲 ბუნება & დაცული ტერიტორიები <span class="text-[10px] bg-emerald-500 text-white px-1.5 py-0.5 rounded font-bold">ახალი</span>
+      </a>
+      <a href="teachers.html" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-emerald-100 font-semibold hover:bg-emerald-800/80">
+        👨‍🏫 გეოგრაფიის პედაგოგები (API მომხმარებლები)
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-records text-white py-14 lg:py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-4xl">
+      <div class="inline-flex items-center gap-2 bg-amber-950/70 border border-amber-400/40 text-amber-300 px-4 py-1 rounded-full text-xs font-bold tracking-wide uppercase mb-4">
+        <span>🏆</span> გვერდი 2: ექსტრემალური გეოგრაფია
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+        საქართველოს <span class="text-amber-300">რეკორდული მაჩვენებლები</span>
+      </h1>
+      <p class="text-stone-200 text-sm sm:text-base leading-relaxed font-light max-w-2xl mx-auto">
+        მსოფლიოს უღრმესი მღვიმეებიდან კავკასიონის 5-ათასიან მწვერვალებამდე — გაეცანით საქართველოს ბუნების უნიკალურ რეკორდებს, კლიმატურ ექსტრემუმებსა და ჰიდროგრაფიულ გიგანტებს.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE SEARCH & FILTER BAR ================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-7 relative z-20 w-full">
+    <div class="bg-white rounded-2xl shadow-xl border border-stone-200 p-4 sm:p-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+        
+        <!-- Live Search Input -->
+        <div class="lg:col-span-6">
+          <div class="search-wrapper">
+            <svg class="search-icon w-5 h-5 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <input 
+              id="pageSearchInput" 
+              type="text" 
+              class="search-input" 
+              placeholder="მოძებნე რეკორდი (მაგ: შხარა, ვერიოვკინა, ტემპერატურა, უშგული, რიონი)..."
+              aria-label="რეკორდების ძებნა"
+            >
+            <button id="clearPageSearch" type="button" class="hidden absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 text-sm font-bold p-1">
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="lg:col-span-6 flex flex-wrap gap-2 justify-start lg:justify-end items-center">
+          <button type="button" class="category-filter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-800 text-white transition" data-category="all">
+            ყველა
+          </button>
+          <button type="button" class="category-filter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-stone-700 border border-stone-300 hover:bg-stone-100 transition" data-category="peaks">
+            🏔️ მწვერვალები
+          </button>
+          <button type="button" class="category-filter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-stone-700 border border-stone-300 hover:bg-stone-100 transition" data-category="depths">
+            🕳️ სიღრმეები
+          </button>
+          <button type="button" class="category-filter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-stone-700 border border-stone-300 hover:bg-stone-100 transition" data-category="water">
+            💧 წყლები & ტბები
+          </button>
+          <button type="button" class="category-filter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-stone-700 border border-stone-300 hover:bg-stone-100 transition" data-category="climate">
+            🌡️ კლიმატი
+          </button>
+          <button type="button" class="category-filter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-stone-700 border border-stone-300 hover:bg-stone-100 transition" data-category="settlements">
+            🏡 დასახლებები
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Counter status -->
+      <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+        <span id="resultsCounter" class="font-medium text-emerald-800">ნაჩვენებია: 12 რეკორდი</span>
+        <span class="text-stone-400">ინტერაქტიული ძებნა რეალურ დროში</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= RECORD CARDS GRID ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+
+    <div id="recordsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1: Shkhara -->
+      <div class="geo-card p-6 searchable-card border-green-accent flex flex-col justify-between" data-category="peaks" data-search-text="შხარა უმაღლესი მწვერვალი 5201 მ სვანეთი კავკასიონი">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-green text-xs">უმაღლესი მწვერვალი</span>
+            <span class="text-xs font-bold text-amber-800">სვანეთი</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">შხარა</h3>
+          <div class="text-3xl font-black text-emerald-800 mb-3">5,201 <span class="text-sm font-semibold text-stone-500">მეტრი</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            საქართველოს უმაღლესი და კავკასიონის მთავარი ქედის სიდიდით მესამე მწვერვალი. წარმოადგენს ბეზენგის კედლის აღმოსავლეთ ნაწილს. დაფარულია მუდმივი მყინვარებით.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>რეგიონი: ზემო სვანეთი</span>
+          <span class="text-emerald-700 font-bold">#1 მწვერვალი</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Veryovkina Cave -->
+      <div class="geo-card p-6 searchable-card border-brown-accent flex flex-col justify-between" data-category="depths" data-search-text="ვერიოვკინა ვერიოვკინის მღვიმე ყველაზე ღრმა მსოფლიოში 2212 მ არაბიკა გაგრა აფხაზეთი">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-brown text-xs">მსოფლიო რეკორდი #1</span>
+            <span class="text-xs font-bold text-amber-800">აფხაზეთი</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">ვერიოვკინის მღვიმე</h3>
+          <div class="text-3xl font-black text-amber-900 mb-3">-2,212 <span class="text-sm font-semibold text-stone-500">მეტრი სიღრმე</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            <strong>მსოფლიოში ყველაზე ღრმა მღვიმე დედამიწაზე!</strong> მდებარეობს გაგრის ქედზე, არაბიკის კარსტულ მასივში. 2018 წლის სპელეოლოგიური ექსპედიციით დამტკიცდა აბსოლუტური გლობალური რეკორდი.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>არაბიკის მასივი</span>
+          <span class="text-amber-800 font-bold">დედამიწის უღრმესი წერტილი</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Krubera Cave -->
+      <div class="geo-card p-6 searchable-card border-brown-accent flex flex-col justify-between" data-category="depths" data-search-text="კრუბერის ვორონია მღვიმე 2197 მ სიღრმე აფხაზეთი გაგრა">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-brown text-xs">მსოფლიო რეკორდი #2</span>
+            <span class="text-xs font-bold text-amber-800">აფხაზეთი</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">კრუბერის (ვორონიას) მღვიმე</h3>
+          <div class="text-3xl font-black text-amber-900 mb-3">-2,197 <span class="text-sm font-semibold text-stone-500">მეტრი სიღრმე</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            მსოფლიოს მეორე ყველაზე ღრმა უფსკრული. ცნობილია როგორც <em>„მიწისქვეშა ევერესტი“</em>. მდებარეობს არაბიკის მასივზე, ორთაბალაგანის ხეობაში.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>გაგრის ქედი</span>
+          <span class="text-amber-800 font-bold">#2 მსოფლიოში</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Kazbek -->
+      <div class="geo-card p-6 searchable-card border-green-accent flex flex-col justify-between" data-category="peaks" data-search-text="ყაზბეგი მყინვარწვერი 5054 მ ვულკანი სტეფანწმინდა ხევი">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-green text-xs">მყინვარული ვულკანი</span>
+            <span class="text-xs font-bold text-emerald-800">ხევი / ყაზბეგი</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">მყინვარწვერი (ყაზბეგი)</h3>
+          <div class="text-3xl font-black text-emerald-800 mb-3">5,054 <span class="text-sm font-semibold text-stone-500">მეტრი</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            საქართველოს ერთ-ერთი უმშვენიერესი მწვერვალი და ჩამქრალი სტრატოვულკანი. მას უკავშირდება ლეგენდა ამირანზე (პრომეთეზე). მის ფერდობზე მდებარეობს გერგეტის სამება და ბეთლემის გამოქვაბული.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>ხოხის ქედი</span>
+          <span class="text-emerald-700 font-bold">მყინვარული გოლიათი</span>
+        </div>
+      </div>
+
+      <!-- Card 5: Longest River (Rioni) -->
+      <div class="geo-card p-6 searchable-card border-green-accent flex flex-col justify-between" data-category="water" data-search-text="რიონი ყველაზე გრძელი მდინარე 327 კმ შავი ზღვა ფასისი კოლხეთი">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-green text-xs">შიდა უგრძესი მდინარე</span>
+            <span class="text-xs font-bold text-emerald-800">დასავლეთ საქართველო</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">მდინარე რიონი</h3>
+          <div class="text-3xl font-black text-emerald-800 mb-3">327 <span class="text-sm font-semibold text-stone-500">კმ ქვეყნის შიგნით</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            მთლიანად საქართველოს ფარგლებში მიმავალი ყველაზე გრძელი მდინარე. სათავეს იღებს კავკასიონის ფასის მყინვარიდან, გაივლის რაჭას, იმერეთსა და კოლხეთის დაბლობს და უერთდება შავ ზღვას ფოთთან.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>აუზი: შავი ზღვა</span>
+          <span class="text-emerald-700 font-bold">ანტიკური ფასისი</span>
+        </div>
+      </div>
+
+      <!-- Card 6: Largest Lake (Paravani) -->
+      <div class="geo-card p-6 searchable-card border-brown-accent flex flex-col justify-between" data-category="water" data-search-text="ფარავანი ფარავნის ტბა ყველაზე დიდი ტბა 37.5 კმ2 ჯავახეთი">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-brown text-xs">უდიდესი ტბა ფართობით</span>
+            <span class="text-xs font-bold text-amber-800">სამცხე-ჯავახეთი</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">ფარავნის ტბა</h3>
+          <div class="text-3xl font-black text-amber-900 mb-3">37.5 <span class="text-sm font-semibold text-stone-500">კმ² ფართობი</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            საქართველოს ყველაზე დიდი ტბა ზედაპირის ფართობით. მდებარეობს ჯავახეთის ვულკანურ ზეგანზე, ზღვის დონიდან 2,073 მეტრზე. ტბიდან გამოედინება მდინარე ფარავანი (მტკვრის შენაკადი).
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>სიმაღლე: 2,073 მ</span>
+          <span class="text-amber-800 font-bold">ვულკანური პლატო</span>
+        </div>
+      </div>
+
+      <!-- Card 7: Deepest Lake (Ritsa) -->
+      <div class="geo-card p-6 searchable-card border-green-accent flex flex-col justify-between" data-category="water" data-search-text="რიწა რიწის ტბა ყველაზე ღრმა ტბა 101 მ აფხაზეთი ბზიფი">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-green text-xs">ყველაზე ღრმა ტბა</span>
+            <span class="text-xs font-bold text-emerald-800">აფხაზეთი</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">რიწის ტბა</h3>
+          <div class="text-3xl font-black text-emerald-800 mb-3">101 <span class="text-sm font-semibold text-stone-500">მეტრი სიღრმე</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            საქართველოს ყველაზე ღრმა და ულამაზესი მაღალმთიანი ტბა (ზღვის დონიდან 928 მ). წარმოიქმნა დაახლოებით 250 წლის წინ მთის ჩამოქცევისა და მდინარე იუფშარის შეგუბების შედეგად.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>მდებარეობა: მდ. ბზიფის აუზი</span>
+          <span class="text-emerald-700 font-bold">კავკასიის მარგალიტი</span>
+        </div>
+      </div>
+
+      <!-- Card 8: Extreme Rain (Mtirala) -->
+      <div class="geo-card p-6 searchable-card border-green-accent flex flex-col justify-between" data-category="climate" data-search-text="მტირალა მთა მტირალა ყველაზე ნალექიანი 4500 მმ წვიმა აჭარა">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-green text-xs">ევრაზიის ნალექების რეკორდი</span>
+            <span class="text-xs font-bold text-emerald-800">აჭარა</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">მთა მტირალა</h3>
+          <div class="text-3xl font-black text-emerald-800 mb-3">4,500 <span class="text-sm font-semibold text-stone-500">მმ წელიწადში</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            საქართველოსა და მთელი ყოფილი საბჭოთა კავშირის/ევრაზიის ერთ-ერთი ყველაზე ნალექიანი ადგილი. სახელწოდებაც აქედან მომდინარეობს: მთა თითქმის ყოველთვის ნისლსა და წვიმაშია გახვეული.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>მტირალას ეროვნული პარკი</span>
+          <span class="text-emerald-700 font-bold">ტროპიკული ნესტი</span>
+        </div>
+      </div>
+
+      <!-- Card 9: Extreme Temperature (Shiraki & Javakheti) -->
+      <div class="geo-card p-6 searchable-card border-brown-accent flex flex-col justify-between" data-category="climate" data-search-text="ტემპერატურა სიცხე სიცივე +44 -42 შირაქი ჯავახეთი დედოფლისწყარო">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-brown text-xs">ტემპერატურული ამპლიტუდა</span>
+            <span class="text-xs font-bold text-amber-800">კახეთი / ჯავახეთი</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">ტემპერატურის რეკორდები</h3>
+          <div class="text-2xl font-black text-amber-900 mb-3">+44°C <span class="text-sm font-semibold text-stone-500">/</span> -42°C</div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            მაქსიმალური ტემპერატურა <strong>+44°C</strong> დაფიქსირდა შირაქის ველზე (დედოფლისწყარო). აბსოლუტური მინიმუმი <strong>-42°C</strong> დაფიქსირდა ჯავახეთის ზეგანზე და ყაზბეგის მაღალმთიან მეტეოსადგურზე.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>ამპლიტუდა: 86°C</span>
+          <span class="text-amber-800 font-bold">ექსტრემალური ჰავა</span>
+        </div>
+      </div>
+
+      <!-- Card 10: High Settlements (Bochorna & Ushguli) -->
+      <div class="geo-card p-6 searchable-card border-green-accent flex flex-col justify-between" data-category="settlements" data-search-text="ბოჭორნა უშგული უმაღლესი სოფელი დასახლება თუშეთი სვანეთი 2345 2200 მ">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-green text-xs">უმაღლესი დასახლებები</span>
+            <span class="text-xs font-bold text-emerald-800">თუშეთი & სვანეთი</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">ბოჭორნა & უშგული</h3>
+          <div class="text-3xl font-black text-emerald-800 mb-3">2,345 <span class="text-sm font-semibold text-stone-500">მ (ბოჭორნა)</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            <strong>ბოჭორნა</strong> (თუშეთი) ევროპაში ყველაზე მაღლა მდებარე მუდმივად დასახლებული პუნქტია (2,345 მ). <strong>უშგული</strong> (სვანეთი, 2,200 მ) კი იუნესკოს მსოფლიო მემკვიდრეობის ძეგლია თავისი შუა საუკუნეების კოშკებით.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>ევროპის სახურავი</span>
+          <span class="text-emerald-700 font-bold">UNESCO</span>
+        </div>
+      </div>
+
+      <!-- Card 11: Enguri Dam -->
+      <div class="geo-card p-6 searchable-card border-brown-accent flex flex-col justify-between" data-category="water" data-search-text="ენგურჰესი ენგურის კაშხალი თაღოვანი კაშხალი 271.5 მ ჰიდროელექტროსადგური">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-brown text-xs">უდიდესი ინჟინერია</span>
+            <span class="text-xs font-bold text-amber-800">სამეგრელო / სვანეთი</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">ენგურჰესის კაშხალი</h3>
+          <div class="text-3xl font-black text-amber-900 mb-3">271.5 <span class="text-sm font-semibold text-stone-500">მეტრი სიმაღლე</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            მსოფლიოში ერთ-ერთი უმაღლესი ბეტონის თაღოვანი კაშხალი. ენგურჰესი საქართველოს ენერგეტიკის უმთავრესი ხერხემალია და მინიჭებული აქვს ეროვნული კატეგორიის კულტურული მემკვიდრეობის ძეგლის სტატუსი.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>კაშხლის ტიპი: თაღოვანი</span>
+          <span class="text-amber-800 font-bold">ენერგო-გიგანტი</span>
+        </div>
+      </div>
+
+      <!-- Card 12: Oldest Reserve (Lagodekhi) -->
+      <div class="geo-card p-6 searchable-card border-green-accent flex flex-col justify-between" data-category="settlements" data-search-text="ლაგოდეხი ნაკრძალი უძველესი ნაკრძალი 1912 წელი კახეთი ირემი">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="badge-green text-xs">უძველესი დაცული ტერიტორია</span>
+            <span class="text-xs font-bold text-emerald-800">კახეთი</span>
+          </div>
+          <h3 class="text-2xl font-extrabold text-stone-900 mb-1">ლაგოდეხის ნაკრძალი</h3>
+          <div class="text-3xl font-black text-emerald-800 mb-3">1912 <span class="text-sm font-semibold text-stone-500">წელს დაარსდა</span></div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            საქართველოს პირველი ოფიციალური ნაკრძალი. გამოირჩევა პირველყოფილი ხელუხლებელი წიფლნარებით, ჩანჩქერებით, შავი კლდეების ტბითა და კავკასიური კეთილშობილი ირმისა და ჯიხვის პოპულაციით.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-stone-100 text-xs text-stone-500 flex items-center justify-between">
+          <span>დამფუძნებელი: ლუდვიკ მლოკოსევიჩი</span>
+          <span class="text-emerald-700 font-bold">114 წლის ისტორია</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- No Results Box (Hidden by default) -->
+    <div id="noResultsBox" class="hidden py-16 text-center bg-stone-100 rounded-2xl border-2 border-dashed border-stone-300 mt-6">
+      <div class="text-4xl mb-2">🔍</div>
+      <h3 class="text-lg font-bold text-stone-700">რეკორდი ვერ მოიძებნა</h3>
+      <p class="text-xs text-stone-500 mt-1">სცადეთ სხვა საძიებო სიტყვა (მაგალითად: შხარა, მღვიმე, ტბა, სიმაღლე)</p>
+    </div>
+
+  </main>
+
+  <!-- ================= VISUAL COMPARISON: TOP PEAKS OF GEORGIA ================= -->
+  <section class="py-16 bg-[#f4ede4] border-t border-stone-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="badge-brown mb-2">სიმაღლეების შედარება</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900">
+          საქართველოს 5 უმაღლესი მწვერვალი
+        </h2>
+        <p class="text-xs sm:text-sm text-stone-600 mt-1">
+          ყველა მათგანი აღემატება დასავლეთ ევროპის უმაღლეს მწვერვალ მონბლანს (4,809 მ)
+        </p>
+      </div>
+
+      <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-stone-200 space-y-5">
+        
+        <!-- Peak 1 -->
+        <div>
+          <div class="flex justify-between items-center text-sm font-bold mb-1">
+            <span class="text-stone-900">1. შხარა (სვანეთი)</span>
+            <span class="text-emerald-800">5,201 მ</span>
+          </div>
+          <div class="w-full bg-stone-100 rounded-full h-4 overflow-hidden">
+            <div class="bg-gradient-to-r from-emerald-700 to-emerald-500 h-4 rounded-full transition-all duration-500" style="width: 100%;"></div>
+          </div>
+        </div>
+
+        <!-- Peak 2 -->
+        <div>
+          <div class="flex justify-between items-center text-sm font-bold mb-1">
+            <span class="text-stone-900">2. ჯანღა (სვანეთი)</span>
+            <span class="text-emerald-800">5,059 მ</span>
+          </div>
+          <div class="w-full bg-stone-100 rounded-full h-4 overflow-hidden">
+            <div class="bg-gradient-to-r from-emerald-700 to-emerald-500 h-4 rounded-full transition-all duration-500" style="width: 97.2%;"></div>
+          </div>
+        </div>
+
+        <!-- Peak 3 -->
+        <div>
+          <div class="flex justify-between items-center text-sm font-bold mb-1">
+            <span class="text-stone-900">3. მყინვარწვერი / ყაზბეგი (ხევი)</span>
+            <span class="text-amber-900">5,054 მ</span>
+          </div>
+          <div class="w-full bg-stone-100 rounded-full h-4 overflow-hidden">
+            <div class="bg-gradient-to-r from-amber-700 to-amber-600 h-4 rounded-full transition-all duration-500" style="width: 97.1%;"></div>
+          </div>
+        </div>
+
+        <!-- Peak 4 -->
+        <div>
+          <div class="flex justify-between items-center text-sm font-bold mb-1">
+            <span class="text-stone-900">4. შოთა რუსთაველის მწვერვალი</span>
+            <span class="text-emerald-800">4,960 მ</span>
+          </div>
+          <div class="w-full bg-stone-100 rounded-full h-4 overflow-hidden">
+            <div class="bg-gradient-to-r from-emerald-700 to-emerald-500 h-4 rounded-full transition-all duration-500" style="width: 95.3%;"></div>
+          </div>
+        </div>
+
+        <!-- Peak 5 -->
+        <div>
+          <div class="flex justify-between items-center text-sm font-bold mb-1">
+            <span class="text-stone-900">5. თეთნულდი (სვანეთის პატარძალი)</span>
+            <span class="text-amber-900">4,858 მ</span>
+          </div>
+          <div class="w-full bg-stone-100 rounded-full h-4 overflow-hidden">
+            <div class="bg-gradient-to-r from-amber-700 to-amber-600 h-4 rounded-full transition-all duration-500" style="width: 93.4%;"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick nav -->
+      <div class="mt-10 text-center flex flex-wrap justify-center gap-4">
+        <a href="index.html" class="btn-outline-geo text-xs">
+          &larr; წინა: მდებარეობა
+        </a>
+        <a href="rivers.html" class="btn-primary-geo text-xs">
+          გადასვლა მე-3 გვერდზე: მდინარეები &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-geo mt-auto py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
+        
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-white font-extrabold text-lg">
+            <span>🇬🇪</span> GeoEdu საქართველო
+          </div>
+          <p class="text-stone-400 text-xs leading-relaxed">
+            საქართველოს გეოგრაფიის სასწავლო პორტფოლიო. მე-2 გვერდი ეძღვნება ქვეყნის რეკორდულ მაჩვენებლებსა და ექსტრემუმებს.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">სწრაფი ნავიგაცია</h4>
+          <ul class="space-y-2 text-xs text-stone-300">
+            <li><a href="index.html" class="hover:text-amber-300 transition">1. გეოგრაფიული მდებარეობა</a></li>
+            <li><a href="records.html" class="hover:text-amber-300 transition">2. რეკორდული მაჩვენებლები</a></li>
+            <li><a href="rivers.html" class="hover:text-amber-300 transition">3. საქართველოს მდინარეები</a></li>
+            <li><a href="caves.html" class="hover:text-amber-300 transition">4. საქართველოს მღვიმეები</a></li>
+            <li><a href="nature.html" class="hover:text-amber-300 transition">5. ბუნება & პარკები (ახალი)</a></li>
+            <li><a href="teachers.html" class="hover:text-amber-300 transition">6. პედაგოგები (API)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">საძიებო სისტემა</h4>
+          <p class="text-xs text-stone-400">
+            გამოიყენეთ რეალურ დროში ფილტრაცია და ძებნა რეკორდების, სიმაღლეების, სიღრმეებისა და კლიმატური მაჩვენებლების მყისიერად მოსაძებნად.
+          </p>
+        </div>
+
+        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+          <div class="text-amber-300 text-lg mb-1">💡</div>
+          <p class="text-xs text-stone-300 leading-relaxed">
+            იცოდით? მსოფლიოს 4 უღრმესი მღვიმიდან 4-ვე საქართველოში (აფხაზეთის კარსტულ მასივზე) მდებარეობს!
+          </p>
+        </div>
+
+      </div>
+
+      <div class="pt-6 border-t border-stone-800 text-center text-xs text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div>
+          &copy; <span id="currentYear">2026</span> GeoEdu. საქართველოს გეოგრაფიის სასწავლო პორტფოლიო.
+        </div>
+        <div class="text-[11px] text-stone-400">
+          სრულად რესპონსიული ვებ-გვერდი • Tailwind CSS & JavaScript
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll To Top Button -->
+  <button id="scrollTopBtn" type="button" class="fixed bottom-6 right-6 p-3 rounded-full bg-emerald-700 text-white shadow-xl opacity-0 pointer-events-none transition-all duration-300 hover:bg-emerald-800 focus:outline-none z-40" aria-label="ზემოთ დაბრუნება">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>
